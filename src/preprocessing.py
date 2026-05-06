@@ -7,7 +7,7 @@ def load_data(file_path):
 
 def handle_missing_values(df):
     """Fill missing values"""
-    return df.fillna(method='ffill')
+    return df.ffill()
 
 def preprocess_features(df):
     """Feature engineering or transformation placeholder"""
