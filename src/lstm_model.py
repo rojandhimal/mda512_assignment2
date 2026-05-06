@@ -53,10 +53,10 @@ def encode_features(df: pd.DataFrame):
         df[col] = le.fit_transform(df[col])
         encoders[col] = le
 
-    # Normalise amount to [0, 1]
-    df["amount"] = (df["amount"] - df["amount"].min()) / (
-        df["amount"].max() - df["amount"].min()
-    )
+    # Normalise amount to [0, 1] (epsilon avoids division by zero if all values are equal)
+    amount_min = df["amount"].min()
+    amount_max = df["amount"].max()
+    df["amount"] = (df["amount"] - amount_min) / (amount_max - amount_min + 1e-8)
     return df, encoders
 
 

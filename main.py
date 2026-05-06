@@ -8,7 +8,7 @@ from src.lstm_model import train_lstm
 def main():
     os.makedirs("outputs", exist_ok=True)
 
-    # --- Original Walmart preprocessing (kept for backwards compatibility) ---
+    # Load and preprocess Walmart data (retained for backwards compatibility)
     df = prep.load_data("data/Walmart.csv")
     df = prep.handle_missing_values(df)
     df = prep.preprocess_features(df)
